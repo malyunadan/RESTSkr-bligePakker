@@ -1,0 +1,6 @@
+@RESTSkrøbligePakker_HostAddress = http://localhost:5187
+
+GET {{RESTSkrøbligePakker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
