@@ -9,17 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //Database connection string
-string connectionString = "Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;";
+//string connectionString = "Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;";
 
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IPackageRepository, PackageRepository>();
-builder.Services.AddSingleton<ILimitProfileRepository, LimitProfileRepository>();
-builder.Services.AddSingleton<ISensorEventRepository, SensorEventRepository>();
+//builder.Services.AddSingleton<IPackageRepository, PackageRepository>();
+//builder.Services.AddSingleton<ILimitProfileRepository, LimitProfileRepository>();
+//builder.Services.AddSingleton<ISensorEventRepository, SensorEventRepository>();
 
+// registrér repositories med connection string
+builder.Services.AddScoped<IPackageRepository>(sp => new PackageRepository("Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;"));
+builder.Services.AddScoped<ILimitProfileRepository>(sp => new LimitProfileRepository("Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;"));
+builder.Services.AddScoped<ISensorEventRepository>(sp => new SensorEventRepository("Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;"));
 
 var app = builder.Build();
 
