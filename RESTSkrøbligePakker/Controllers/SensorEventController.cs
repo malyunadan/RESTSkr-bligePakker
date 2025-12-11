@@ -56,6 +56,12 @@ namespace RESTSkrøbligePakker.Controllers
             _sensorEventRepository.AddSensorEvent(evt);
             return CreatedAtAction(nameof(GetEventById), new { id = evt.Id }, evt);// 201 Created
         }
+
+        [HttpGet("package/{packageId}")]
+        public ActionResult<IEnumerable<SensorEvent>> GetEventsByPackageId(int packageId)
+        {
+            return Ok(_sensorEventRepository.GetEventsByPackageId(packageId));
+        }
     }
 }
 
