@@ -38,7 +38,8 @@ builder.Services.AddScoped<ILimitProfileRepository>(sp => new LimitProfileReposi
 builder.Services.AddScoped<ISensorEventRepository>(sp => new SensorEventRepository("Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;"));
 
 var app = builder.Build();
-app.UseCors("AllowAll");
+
+app.UseCors("FrontendPolicy");
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
