@@ -14,11 +14,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendPolicy", policy =>
     {
-        policy.WithOrigins("http://localhost:5500") // din Vue frontend
+        policy.AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader();
     });
 });
+
 
 //Database connection string
 string connectionString = "Server=mssql17.unoeuro.com;Database=slk2025_dk_db_dt;User Id=slk2025_dk;Password=f49rRH25wcAnbFEthzkB;TrustServerCertificate=True;";
